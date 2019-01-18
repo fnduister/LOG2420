@@ -7,12 +7,18 @@
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
     <script>
       let changed = false;
-      const myFunction = () => {
-        const monBouton = document.getElementById("buttonStyled");
+      const toggleTableDisplay = () => {
+        //seclectionner le button ainsi que le tableau qu'on veut modifier
+        const monBouton = document.querySelector("#buttonStyled");
+        const tableauACacher = document.querySelector("#output2");
+
+        //a chaque clique on change le text du bouton ainsi que la visibilite du tableau
         if (changed) {
-          monBouton.innerHTML = "montrer table";
+          monBouton.innerHTML = "Effacer tableau 4";
+          tableauACacher.style.display = "";
         } else {
-          monBouton.innerHTML = "cacher table";
+          monBouton.innerHTML = "Ajouter tableau 4";
+          tableauACacher.style.display = "none";
         }
         changed = !changed;
       };
@@ -35,6 +41,19 @@
       }
       #buttonStyled {
         margin-bottom: 2vh;
+        background-color: rgb(216, 126, 126);
+        border-radius: 5px;
+        border: none;
+        padding: 1em;
+        color: white;
+        -webkit-transition-duration: 0.4s; /* for safari browser */
+        transition-duration: 0.4s;
+      }
+
+      /* change background color quand on hover*/
+      #buttonStyled:hover {
+        color: black;
+        background: #f7eecf;
       }
     </style>
     <title>TD1, données initiales</title>
@@ -42,8 +61,8 @@
 
   <body>
     <h1>TD1, étape 1</h1>
-    <button type="button" onclick="myFunction()" id="buttonStyled">
-      cacher tableau
+    <button type="button" onclick="toggleTableDisplay()" id="buttonStyled">
+      Effacer tableau 4
     </button>
     <table class="tableStyled" id="param">
       <tr>
