@@ -9,18 +9,11 @@
       let changed = false;
       const toggleTableDisplay = () => {
         //seclectionner le button ainsi que le tableau qu'on veut modifier
-        const monBouton = document.querySelector("#buttonStyled");
-        const tableauACacher = document.querySelector("#output2");
+        const tds = document.querySelectorAll("td");
+        const nouveauTds = tds.filter((td) => /^$/.test(td.innerText));
+        for(td of tds){
 
-        //a chaque clique on change le text du bouton ainsi que la visibilite du tableau
-        if (changed) {
-          monBouton.innerHTML = "Effacer tableau 4";
-          tableauACacher.style.display = "";
-        } else {
-          monBouton.innerHTML = "Ajouter tableau 4";
-          tableauACacher.style.display = "none";
         }
-        changed = !changed;
       };
     </script>
 
