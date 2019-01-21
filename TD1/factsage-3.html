@@ -8,11 +8,20 @@
     <script>
       let changed = false;
       const toggleTableDisplay = () => {
-        //seclectionner le button ainsi que le tableau qu'on veut modifier
-        const tds = document.querySelectorAll("td");
-        const nouveauTds = tds.filter((td) => /^$/.test(td.innerText));
-        for(td of tds){
-
+        const inferior = 1e-4; //minimun pour changer la couleur du background
+        const re = /^-?\d.\d*E[+|-]\d*$/; //regex pour trouver un nombre avec exposant
+        const tds = document.querySelectorAll("td"); //selectionner le button ainsi que le tableau qu'on veut modifier
+        const arrayTds = Array.from(tds); //transforme notre tableau en array pour pouvoir utiliser le filtre
+        const filterdTds = arrayTds.filter(
+          td => /^-?\d.\d*E[+|-]\d*$/.test(td.innerText) //retourne les td qui contiennent des nombres avec exposant
+        );
+        for (td of filterdTds) {
+          //on transforme le text en float, ensuite on applique l'exposant a 2
+          td.innerText = parseFloat(td.innerText).toExponential(2);
+          if (td.innerText < inferior) {
+            // change la couleur du background si la valeur du td est inferieur a la valeur recherche
+            td.style.backgroundColor = "Gainsboro ";
+          }
         }
       };
     </script>
@@ -54,8 +63,8 @@
 
   <body>
     <h1>TD1, étape 1</h1>
-    <button type="bu tton" onclick="toggleTableDisplay()" id="buttonStyled">
-      Effacer tableau 4
+    <button type="button" onclick="toggleTableDisplay()" id="buttonStyled">
+      toExponential
     </button>
     <table class="tableStyled" id="param">
       <tr>
