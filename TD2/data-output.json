@@ -1,0 +1,246 @@
+{
+  "formule": "Mg +  3 Cu2O +  2 Fe3C = ?",
+  "output1": [
+    {
+      "libelle": "CO2",
+      "concentration": 0.17814e-19,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "gas_ideal",
+        "a": 0.21821e-19
+      }
+    },
+    {
+      "libelle": "CO",
+      "concentration": 0.40065e-20,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "gas_ideal",
+        "a": 0.21821e-19
+      }
+    },
+    {
+      "libelle": "Cu",
+      "concentration": 0.64397e-52,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "gas_ideal",
+        "a": 0.21821e-19
+      }
+    },
+    {
+      "libelle": "Fe",
+      "concentration": 0.27902e-63,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "gas_ideal",
+        "a": 0.21821e-19
+      }
+    },
+    {
+      "libelle": "C3O2",
+      "concentration": 0.22972e-69,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "gas_ideal",
+        "a": 0.21821e-19
+      }
+    },
+    {
+      "libelle": "Cu",
+      "concentration": 6.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "Fe_bcc",
+      "concentration": 4.5,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "C_graphite",
+      "concentration": 2.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "MgO_periclase",
+      "concentration": 1.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "Fe3O4_magnetite",
+      "concentration": 0.5,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "C_diamond",
+      "concentration": 0.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S2",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "MgO",
+      "concentration": 0.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    },
+    {
+      "libelle": "Mg",
+      "concentration": 0.0,
+      "conditions": {
+        "temperature": {
+          "unite": "K",
+          "valeur": 298.15
+        },
+        "pression": {
+          "unite": "atm",
+          "valeur": 1
+        },
+        "type": "S1",
+        "a": 1
+      }
+    }
+  ],
+
+  "output2": [
+    {
+      "libelle": "H",
+      "unite": "J",
+      "valeur": -1.16e6
+    },
+    {
+      "libelle": "G",
+      "unite": "J",
+      "valeur": -1.289e6
+    },
+    {
+      "libelle": "V",
+      "unite": "l",
+      "valeur": 0.0
+    },
+    {
+      "libelle": "S",
+      "unite": "J/K",
+      "valeur": 4.332e2
+    },
+    {
+      "libelle": "U",
+      "unite": "J",
+      "valeur": -1.16e6
+    },
+    {
+      "libelle": "Cp",
+      "unite": "J/K",
+      "valeur": 3.885e2
+    }
+  ]
+}
