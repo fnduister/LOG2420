@@ -5,9 +5,10 @@
     <meta HTTP-EQUIV="Pragma" CONTENT="no-cache" />
     <meta HTTP-EQUIV="Expires" CONTENT="-1" />
     <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
+
     <script>
       let changed = false;
-      const toggleTableDisplay = () => {
+      const changerNumbers = () => {
         const inferior = 1e-4; //minimun pour changer la couleur du background
         const re = /^-?\d.\d*E[+|-]\d*$/; //regex pour trouver un nombre avec exposant
         const tds = document.querySelectorAll("td"); //selectionner le button ainsi que le tableau qu'on veut modifier
@@ -29,18 +30,16 @@
     <style TYPE="text/css">
       table {
         border-collapse: collapse;
-      }
-      .tableHeader {
-        background-color: #f7eecf;
-        border-width: 0px 0px 1px;
-        border-style: solid;
-      }
-      .tableStyled {
         border-style: solid;
         padding: 0px;
-        border-width: 2px 0px;
+        border-width: 3px 0px;
         margin-bottom: 1vh;
       }
+      th {
+        background-color: #f7eecf;
+        border-bottom: 1px solid;
+      }
+
       #buttonStyled {
         margin-bottom: 2vh;
         background-color: rgb(216, 126, 126);
@@ -58,15 +57,17 @@
         background: #f7eecf;
       }
     </style>
-    <title>TD1, données initiales</title>
+    <title>TD1, étape 3</title>
   </head>
 
   <body>
-    <h1>TD1, étape 1</h1>
-    <button type="button" onclick="toggleTableDisplay()" id="buttonStyled">
-      toExponential
+    <h1>TD1, étape 3</h1>
+
+    <button type="button" onclick="changerNumbers()" id="buttonStyled">
+      transforme les nombres
     </button>
-    <table class="tableStyled" id="param">
+
+    <table id="param">
       <tr>
         <td>T</td>
         <td>=</td>
@@ -84,8 +85,8 @@
       </tr>
     </table>
 
-    <table class="tableStyled" id="constituents">
-      <tr class="tableHeader">
+    <table id="constituents">
+      <tr>
         <th>STREAM CONSTITUENTS</th>
         <th>AMOUNT/mol</th>
       </tr>
@@ -103,14 +104,14 @@
       </tr>
     </table>
 
-    <table class="tableStyled" id="output1">
-      <tr class="tableHeader">
+    <table id="output1">
+      <tr>
         <th></th>
         <th>EQUIL AMOUNT</th>
         <th>MOLE FRACTION</th>
         <th>FUGACITY</th>
       </tr>
-      <tr class="tableHeader">
+      <tr>
         <th>PHASE: gas_ideal</th>
         <th>mol</th>
         <th></th>
@@ -154,8 +155,8 @@
       </tr>
     </table>
 
-    <table class="tableStyled" id="output2">
-      <tr class="tableHeader">
+    <table id="output2">
+      <tr>
         <th></th>
         <th>mol</th>
         <th>ACTIVITY</th>
@@ -367,20 +368,20 @@
       </tr>
     </table>
 
-    <table class="tableStyled" id="part1">
-      <tr class="tableHeader">
-        <td>Cp</td>
-        <td>H</td>
-        <td>S</td>
-        <td>G</td>
-        <td>V</td>
+    <table id="part1">
+      <tr>
+        <th>Cp</th>
+        <th>H</th>
+        <th>S</th>
+        <th>G</th>
+        <th>V</th>
       </tr>
-      <tr class="tableHeader">
-        <td>J.K-1</td>
-        <td>J</td>
-        <td>J.K-1</td>
-        <td>J</td>
-        <td>dm3</td>
+      <tr>
+        <th>J.K-1</th>
+        <th>J</th>
+        <th>J.K-1</th>
+        <th>J</th>
+        <th>dm3</th>
       </tr>
       <tr>
         <td>3.88507E+02</td>
@@ -391,20 +392,20 @@
       </tr>
     </table>
 
-    <table class="tableStyled" id="part2">
-      <tr class="tableHeader">
-        <td></td>
-        <td>Cp</td>
-        <td>H</td>
-        <td>S</td>
-        <td>G</td>
+    <table id="part2">
+      <tr>
+        <th></th>
+        <th>Cp</th>
+        <th>H</th>
+        <th>S</th>
+        <th>G</th>
       </tr>
-      <tr class="tableHeader">
-        <td></td>
-        <td>J.K-1</td>
-        <td>J</td>
-        <td>J.K-1</td>
-        <td>J</td>
+      <tr>
+        <th></th>
+        <th>J.K-1</th>
+        <th>J</th>
+        <th>J.K-1</th>
+        <th>J</th>
       </tr>
       <tr>
         <td>C_Graphite(s)</td>
@@ -444,7 +445,8 @@
     </table>
 
     Cut-off limit for gaseous fractions/phase activities = 1.00E-70 Databases:
-    FactPS 7.2 Data Search options: exclude gas ions; organic CxHy.. X(max) = 2;
-    min soln cpts = 2
+    FactPS 7.2 <br />
+    Data Search options: exclude gas ions; organic CxHy.. X(max) = 2; min soln
+    cpts = 2
   </body>
 </html>

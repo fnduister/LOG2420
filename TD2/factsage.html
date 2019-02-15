@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <head>
     <title>Explanation of EQUILIB-Web Results</title>
     <link rel="stylesheet" href="factsage.css" />
+    <script type="text/javascript" src="factsage.js"></script>
   </head>
   <body>
     <div class="container">
@@ -11,95 +11,78 @@
           "Chemical equilibria of an ideal gas with pure solids and liquids"
         </p>
       </div>
-
-      <div class="row2">
-        <div class="column1">
-          <label>T:</label>
-          <input value="1000" />
-          <label>Units: </label>
-          <select
-            ><option>12</option>
-            <option>1</option>
-            <option>16</option>
-          </select>
-        </div>
-        <div>
-          <label>Mass: </label>
-          <select
-            ><option>12</option>
-            <option>1</option>
-            <option>16</option>
-          </select>
-        </div>
-        <div>
-          <label>P:</label>
-          <input value="1" />
-          <label>Units: </label>
-          <select
-            ><option>12</option>
-            <option>1</option>
-            <option>16</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row3">
-        <div>
-          <label>Mass:</label>
-          <input />
-          <label>Mass:</label>
-          <input />
-        </div>
-        <div>
-          <label>Species:</label>
-          <input value="Si" /> <span>+</span>
-          <label>Species:</label>
-          <input value="Si" /><button>+</button>
-        </div>
-      </div>
-
-      <div class="row4">
-        <div>
-
-          <div>
-            <span> Output </span>
+      <form onsubmit="handleSubmit(this)">
+        <div class="row2">
+          <div class="column1">
+            <label>T:</label> <input value="1000" /> <label>Units: </label>
+            <select name="Units">
+              <option value="K" id="test">K</option>
+              <option value="C">C</option>
+            </select>
           </div>
           <div>
-            <span> Concentration cut-off </span>
-            
+            <label>Mass: </label>
+            <select name="Mass"
+              ><option value="gram">gram</option>
+              <option value="mole">mole</option>
+            </select>
           </div>
           <div>
-            <select> <option value="">1e-70</option> </select>
+            <label>P:</label> <input value="1" name="P" />
+            <label>Units: </label>
+            <select name="Units"
+              ><option>atm</option>
+              <option>bar</option>
+            </select>
           </div>
-
-          <div>
-            <span>  </span>
-          </div>
-          <div>
-            <span> format </span>
-          </div>
-          <div>
-            <select> <option value="">Extended</option> </select>
-          </div>
-
-          <div>
-            <span>  </span>
-          </div>
-          <div>
-            <span> Distribution </span>
-          </div>
-          <div>
-            <select> <option value="">no</option> </select>
-          </div>
-
         </div>
 
-        <div>
-          <button>Clear</button>
-          <button>Default</button>
-          <button>Calculate >></button>
+        <div class="row3">
+          <div>
+            <label>Mass:</label> <input /> <label>Mass:</label> <input />
+          </div>
+          <div>
+            <label>Species:</label> <input value="Si" name="Species" />
+            <span>+</span> <label>Species:</label>
+            <input value="O2" name="Species" /><button>+</button>
+          </div>
         </div>
-      </div>
+
+        <div class="row4">
+          <div>
+            <div><span> Output </span></div>
+            <div><span> Concentration cut-off </span></div>
+            <div>
+              <select>
+                <option value="">1e-70</option>
+              </select>
+            </div>
+
+            <div><span> </span></div>
+            <div><span> format </span></div>
+            <div>
+              <select name="format">
+                <option value="OUTB">Extended</option>
+              </select>
+            </div>
+
+            <div><span> </span></div>
+            <div><span> Distribution </span></div>
+            <div>
+              <select name="DIST">
+                <option value="NODIST">no</option>
+                <option value="YESDIST">yes</option>
+              </select>
+            </div>
+          </div>
+
+          <input>
+            <button >Clear</button> <button>Default</button>
+            <button id="btn_submit" type="submit">Calculate >></button>
+            <input type="hidden" name="submit" value="Calculate >>" />
+          </div>
+        </div>
+      </form>
     </div>
   </body>
 </html>
