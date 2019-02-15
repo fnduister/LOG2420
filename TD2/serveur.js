@@ -30,7 +30,7 @@ var dataFile = fs.readFileSync("data-output.json", "UTF8");
 
 var s = http.createServer(function(req, res) {
   var postData = "initial";
-  //    res.setHeader("Access-Control-Allow-Origin", "*");  // accepte toutes les origines
+  // res.setHeader("Access-Control-Allow-Origin", "*"); // accepte toutes les origines
   res.setHeader("Access-Control-Allow-Origin", "null"); // accepte que la requÃªte proviennent du fureteur directement
   //    res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");

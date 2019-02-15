@@ -1,4 +1,4 @@
-const handleSubmit = formElement => {
+const handleSubmit = async formElement => {
   event.preventDefault();
 
   const data = new URLSearchParams(new FormData(formElement));
@@ -6,32 +6,19 @@ const handleSubmit = formElement => {
   const init = {
     method: "POST",
     body: data,
-    headers: {
-      "content-type": "text/html"
-    },
-    mode: "no-cors"
   };
 
   try {
-    const rep = fetch("http://localhost:8080", init)
-      .then(function(res) {
-        return res.json();
-      })
-      .then(function(rese) {
-        console.log(JSON.stringify(rese));
-      });
-    console.log(rep);
-    // console.log({ responseJson });
+    const dataElement = document.querySelector("#dataTable");
+    dataElement.innerHTML = '<img src="img/loader.gif" alt="loader">';
+    const response = await fetch("http://localhost:8080", init);
+    JSONResponse = await response.json();  
+    displayTable(JSONResponse, dataElement);
   } catch (err) {
     console.log(err);
   }
 };
 
-// window.onload = function() {
-//   var btn_submit = document.getElementById("btn_submit");
-
-//   btn_submit.addEventListener("click", function() {
-//     var formData = document.getElementById("myform");
-//     console.log(formData);
-//   });
-// };
+const displayTable = (data, parentElement) => {
+  
+}
