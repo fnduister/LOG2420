@@ -9,11 +9,11 @@
       <div class="row1">
         Chemical equilibria of an ideal gas with pure solids and liquids
       </div>
-
+      <form onsubmit="handleSubmit(this)">
       <div class="row2">
 
         <div> 
-            <form>
+            
                 <input type="hidden" name="PROGRAM" value="EQUILIB" />
                 T:
                   <input type="text" value="1000" name="TMIN">
@@ -24,22 +24,18 @@
                   <option value="cg">Cg</option>
                   <option value="mg">Mg</option>
                 </select>
-            </form>
         </div>
             
         <div> 
-            <form>
                 mass:
                 <select name="Mass">
                   <option value="G">gram</option>
                   <option value="Hg">hgram</option>
                   <option value="Kg">kgram</option>
                 </select>
-            </form>
         </div>
 
         <div> 
-            <form>
                 P: 
                   <input type="text" value="1" name="P">
                 Units:
@@ -49,14 +45,12 @@
                   <option value="CTM">ctm</option>
                   <option value="DTM">dtm</option>
                 </select>
-            </form>
         </div>
 
       </div>
 
       <div class="row3">
           <div> 
-              <form>
                   Mass 
                   <br>
                     <input type="text" name="M">
@@ -65,11 +59,9 @@
                   <br>
                     <input type="text" name="M">
                   </br>
-              </form>
           </div>
 
           <div> 
-              <form>
                   Species 
                   <br>
                     <input type="text" value="si" name="S"> +
@@ -79,7 +71,6 @@
                     <input type="text" value="si" name="S">
                     <button>+</button>
                   </br>
-              </form>
           </div>
       </div>
 
@@ -122,10 +113,13 @@
           <div>
                 <button>Clear</button>
                 <button>Default</button>
-                <button>Calculate >></button>
+                <button type="submit">Calculate >></button>
               </div>
         </div>
+        </form>
     </div>
-    <div id="dataTable"></div>
+    <div id="dataTable">
+      
+    </div>
   </body>
 </html>
