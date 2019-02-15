@@ -7,82 +7,124 @@
   <body>
     <div class="container">
       <div class="row1">
-        <p>
-          Chemical equilibria of an ideal gas with pure solids and liquids
-        </p>
+        Chemical equilibria of an ideal gas with pure solids and liquids
       </div>
-      <form onsubmit="handleSubmit(this)">
-        <div class="row2">
-          <div class="column1">
-            <label>T:</label> <input value="1000" /> <label>Units: </label>
-            <select name="Units">
-              <option value="K" id="test">K</option>
-              <option value="C">C</option>
-            </select>
-          </div>
-          <div>
-            <label>Mass: </label>
-            <select name="Mass"
-              ><option value="gram">gram</option>
-              <option value="mole">mole</option>
-            </select>
-          </div>
-          <div>
-            <label>P:</label> <input value="1" name="P" />
-            <label>Units: </label>
-            <select name="Units"
-              ><option>atm</option>
-              <option>bar</option>
-            </select>
-          </div>
+
+      <div class="row2">
+
+        <div> 
+            <form>
+                <input type="hidden" name="PROGRAM" value="EQUILIB" />
+                T:
+                  <input type="text" value="1000" name="TMIN">
+                Units:
+                <select name="Units">
+                  <option value="k">K</option>
+                  <option value="g">G</option>
+                  <option value="cg">Cg</option>
+                  <option value="mg">Mg</option>
+                </select>
+            </form>
+        </div>
+            
+        <div> 
+            <form>
+                mass:
+                <select name="Mass">
+                  <option value="G">gram</option>
+                  <option value="Hg">hgram</option>
+                  <option value="Kg">kgram</option>
+                </select>
+            </form>
         </div>
 
-        <div class="row3">
-          <div>
-            <label>Mass:</label> <input /> <label>Mass:</label> <input />
-          </div>
-          <div>
-            <label>Species:</label> <input value="Si" name="Species" />
-            <span>+</span> <label>Species:</label>
-            <input value="O2" name="Species" /><button>+</button>
-          </div>
+        <div> 
+            <form>
+                P: 
+                  <input type="text" value="1" name="P">
+                Units:
+                <select name="Units">
+                  <option value="ATM">atm</option>
+                  <option value="BTM">btm</option>
+                  <option value="CTM">ctm</option>
+                  <option value="DTM">dtm</option>
+                </select>
+            </form>
         </div>
 
-        <div class="row4">
+      </div>
+
+      <div class="row3">
+          <div> 
+              <form>
+                  Mass 
+                  <br>
+                    <input type="text" name="M">
+                  </br>
+                  Mass 
+                  <br>
+                    <input type="text" name="M">
+                  </br>
+              </form>
+          </div>
+
+          <div> 
+              <form>
+                  Species 
+                  <br>
+                    <input type="text" value="si" name="S"> +
+                  </br>
+                  Species 
+                  <br>
+                    <input type="text" value="si" name="S">
+                    <button>+</button>
+                  </br>
+              </form>
+          </div>
+      </div>
+
+      <div class="row4">
+        <div>
           <div>
-            <div><span> Output </span></div>
-            <div><span> Concentration cut-off </span></div>
-            <div>
-              <select>
-                <option value="">1e-70</option>
-              </select>
-            </div>
-
-            <div><span> </span></div>
-            <div><span> format </span></div>
-            <div>
-              <select name="format">
-                <option value="OUTB">Extended</option>
-              </select>
-            </div>
-
-            <div><span> </span></div>
-            <div><span> Distribution </span></div>
-            <div>
-              <select name="DIST">
-                <option value="NODIST">no</option>
-                <option value="YESDIST">yes</option>
-              </select>
-            </div>
+            Output
           </div>
 
-          <input>
-            <button >Clear</button> <button>Default</button>
-            <button id="btn_submit" type="submit">Calculate >></button>
-            <input type="hidden" name="submit" value="Calculate >>" />
+          <div class="row4-col">
+              <div>
+                  Concentration cut-off
+              </div>
+              <div>
+                  Format
+              </div>
+              <div>
+                  Distribution
+              </div>
           </div>
+
+          <div class="row4-col">
+                <div>
+                    <select name="">
+                        <option value="">1e-70</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="">
+                        <option value="">Extended</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="">
+                        <option value="">no</option>
+                    </select>
+                </div>
+            </div>
+          </div>
+          <div>
+                <button>Clear</button>
+                <button>Default</button>
+                <button>Calculate >></button>
+              </div>
         </div>
-      </form>
     </div>
     <div id="dataTable"></div>
   </body>
