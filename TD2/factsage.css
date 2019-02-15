@@ -1,84 +1,70 @@
 .container {
   display: grid;
-  grid-template-rows: 20px 2fr 4fr 4fr;
-  grid-gap: 10px;
+  grid-template-rows: rep(4,auto);
+  grid-gap: 5px;
   padding: 8px;
   background-color: lightgrey;
   border: solid black 1px;
-  /* justify-items: center; */
-  /* width: 100%; */
 }
 
-/* .container > div {
-  padding: 0.5em;
-} */
-
-.row1 > p {
-  border: solid black 1px;
-  margin: auto;
-}
 .row1 {
-  justify-content: center;
-  padding: 0 !important;
-}
+  border: solid black 1px; 
+  font-size: 1.25em;
+ }
 
-.column1 {
-  grid-template-rows: auto;
-  background: papayawhip;
-}
-
-@media screen and (max-width: 1000px) {
-  .column1 {
-    display: inline-grid;
-  }
-}
 
 .row2 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  grid-gap: 10px;
-  background-color: lightyellow;
-  border: solid black 1px;
-}
-
-.row2 div:nth-child(2) {
-  justify-content: center;
-  display: grid;
+  grid-template-columns: repeat(3, auto);
+  background-color:yellow;
+  justify-content: start center end;
+  border: solid black 2px; 
+  padding: 4px;
+  font-size: 1.25em;
+  font-weight: bold;
 }
 
 .row3 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto);
   background-color: lightgoldenrodyellow;
   border: solid black 2px;
-}
-
-.row3 div:nth-child(1) {
-  width: 10em;
-}
-
-.row3 div:nth-child(2) {
-  width: 15em;
+  justify-content: start start;
+  border: solid black 2px;
+  padding: 8px;
 }
 
 .row4 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  background-color: lightgoldenrodyellow;
+  grid-template-columns: repeat(2, auto);
+  background-color:rgb(243, 193, 30);
   border: solid black 2px;
-  padding: 0.5em;
-  column-gap: 25px;
+  padding: 8px;
+  grid-gap: 5px;
 }
 
 .row4 > div:nth-child(1) {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 2fr 1fr;
-  row-gap: 10px;
+  grid-template-columns: repeat(3, auto);
   background-color: yellow;
-  width: 100%;
   border: solid black 1px;
-  padding: 0.5em;
-  /* justify-items: center; */
+  justify-content: start start start;
+  padding: 8px;
 }
+
+.row4 > div:nth-child(1) > div:nth-child(1) {
+  display: grid;
+  grid-template-rows: auto;
+  align-content: start;
+  font-weight: bold;
+}
+
+.row4-col {
+  display: grid;
+  grid-template-rows: rep(auto,3);
+  row-gap: 5px;
+}
+
+
+
+
