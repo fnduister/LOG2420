@@ -75,3 +75,7 @@ th {
   background-color: #f7eecf;
   border-bottom: 1px solid;
 }
+
+#dataTable {
+  margin: 2em auto;
+}
