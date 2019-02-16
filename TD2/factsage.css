@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-rows: rep(4,auto);
+  grid-template-rows: rep(4, auto);
   grid-gap: 5px;
   padding: 8px;
   background-color: lightgrey;
@@ -8,17 +8,16 @@
 }
 
 .row1 {
-  border: solid black 1px; 
+  border: solid black 1px;
   font-size: 1.25em;
- }
-
+}
 
 .row2 {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  background-color:yellow;
+  background-color: yellow;
   justify-content: start center end;
-  border: solid black 2px; 
+  border: solid black 2px;
   padding: 4px;
   font-size: 1.25em;
   font-weight: bold;
@@ -37,7 +36,7 @@
 .row4 {
   display: grid;
   grid-template-columns: repeat(2, auto);
-  background-color:rgb(243, 193, 30);
+  background-color: rgb(243, 193, 30);
   border: solid black 2px;
   padding: 8px;
   grid-gap: 5px;
@@ -61,10 +60,18 @@
 
 .row4-col {
   display: grid;
-  grid-template-rows: rep(auto,3);
+  grid-template-rows: rep(auto, 3);
   row-gap: 5px;
 }
 
-
-
-
+table {
+  border-collapse: collapse;
+  border-style: solid;
+  padding: 0px;
+  border-width: 3px 0px;
+  margin-bottom: 1vh;
+}
+th {
+  background-color: #f7eecf;
+  border-bottom: 1px solid;
+}
