@@ -121,7 +121,3 @@ const createOutputTable = outputData => {
   }
   return outputTable + "</table>";
 };
-
-const ajouterElement = () => {
-  
-}

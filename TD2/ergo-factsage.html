@@ -5,11 +5,11 @@
     <script type="text/javascript" src="factsage.js"></script>
   </head>
   <body>
-    <form onsubmit="handleSubmit(this)">
     <div class="container">
       <div class="row1">
         Chemical equilibria of an ideal gas with pure solids and liquids
       </div>
+      <form onsubmit="handleSubmit(this)">
       <div class="row2">
 
         <div> 
@@ -69,7 +69,7 @@
                   Species 
                   <br>
                     <input type="text" value="si" name="S">
-                    <button type="button" onclick="ajouterElement()">Ajouter element</button>
+                    <button>+</button>
                   </br>
           </div>
       </div>
@@ -116,8 +116,8 @@
                 <button type="submit">Calculate >></button>
               </div>
         </div>
-      </div>
-    </form>
+        </form>
+    </div>
     <div id="dataTable">
       
     </div>
