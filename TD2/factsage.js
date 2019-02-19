@@ -1,4 +1,5 @@
 const exponentialValue = 4;
+let reactif = 2;
 
 const handleSubmit = async formElement => {
   event.preventDefault();
@@ -122,6 +123,16 @@ const createOutputTable = outputData => {
   return outputTable + "</table>";
 };
 
-const ajouterElement = () => {
-  
-}
+const ajouterReactif = () => {
+  event.preventDefault();
+  const reactifRow = document.querySelector(".row3");
+  const dernierReactif = document.querySelector("#dernierReactif");
+  const nouveauReactifDiv = document.createElement("DIV");
+  nouveauReactifDiv.innerHTML = `<span></span>
+  <input type="text" name="M" />
+  <span></span>
+  <input type="text" value="" name="Reactif${reactif++}" /><button type="button">-</button>
+`;
+  dernierReactif.name = `React${reactif}`;
+  reactifRow.insertBefore(nouveauReactifDiv, dernierReactif);
+};
