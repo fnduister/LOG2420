@@ -7,10 +7,86 @@
     <script type="text/javascript" src="chatclient.js"></script>
   </head>
   <body>
-    <div id="chat-title">titre chat</div>
-    <div id="group-title">titre groupe</div>
-    <div id="chat-zone">zone messagerie</div>
-    <div id="group-zone">groupe</div>
-    <div id="text-zone">zone chat text</div>
+    <header>
+      <div><h1>Poly Chat</h1></div>
+      <div id="navigation-icons">
+        <button>
+          <img src="imgs/baseline-settings-20px.svg" alt="settings" />
+        </button>
+        <button class="btn">
+          <img src="imgs/baseline-perm_identity-24px.svg" alt="settings" />
+        </button>
+        <button class="btn">
+          <img
+            src="imgs/baseline-notifications_active-24px.svg"
+            alt="settings"
+          />
+        </button>
+        <button class="btn">
+          <img src="imgs/baseline-language-24px.svg" alt="settings" />
+        </button>
+      </div>
+    </header>
+    <section>
+      <div id="chat-title">
+        <h4>Groupe actif:</h4>
+        <h3>Général</h3>
+      </div>
+      <div id="group-title">
+        <h4>Liste des groupes</h4>
+        <div id="groupe-disponible">
+          <h3>Groupes disponibles</h3>
+          <div>
+            <button>
+              <img src="imgs/baseline-settings-white-20px.gif" alt="settings" />
+            </button>
+            <button>
+              <img src="imgs/baseline-add-white-24px.gif" alt="settings" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="chat-zone">zone messagerie</div>
+      <div id="group-zone">
+        <div id="group-zone-info">
+          <div class="group-info">
+            <div>
+              <button>
+                <img src="imgs/baseline-grade-red-24px.gif" alt="settings" />
+              </button>
+            </div>
+            <h4>General</h4>
+            <button class="default-button">default</button>
+          </div>
+          <div class="group-info">
+            <div>
+              <button>
+                <img src="imgs/baseline-grade-red-24px.gif" alt="settings" />
+              </button>
+            </div>
+            <h4>Equipe 1</h4>
+            <button class="default-button">default</button>
+          </div>
+          <div class="group-info" active>
+            <div>
+              <button>
+                <img src="imgs/baseline-grade-red-24px.gif" alt="settings" />
+              </button>
+            </div>
+            <h4>Equipe 2</h4>
+            <button class="default-button">default</button>
+          </div>
+        </div>
+      </div>
+      <div id="text-zone">
+        <button>
+          <img src="imgs/baseline_thumb_up_white_18dp.png" alt="settings" />\
+        </button>
+        <div>ok voici ou doit aller le text</div>
+        <button>
+          Envoyer
+        </button>
+      </div>
+    </section>
   </body>
 </html>
