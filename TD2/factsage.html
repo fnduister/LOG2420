@@ -1,115 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
     <title>Explanation of EQUILIB-Web Results</title>
     <link rel="stylesheet" href="factsage.css" />
     <script type="text/javascript" src="factsage.js"></script>
   </head>
   <body>
     <form onsubmit="handleSubmit(this)">
-      <div class="container">
-        <div class="row1">
-          Chemical equilibria of an ideal gas with pure solids and liquids
-        </div>
-        <div id="inputZone">
-          <div class="row2">
-            <div>
-              <input type="hidden" name="PROGRAM" value="EQUILIB" />
-              T:
-              <input type="text" value="1000" name="TMIN" />
-              Units:
-              <select name="Units">
-                <option value="K">K</option>
-                <option value="g">G</option>
-                <option value="cg">Cg</option>
-                <option value="mg">Mg</option>
-              </select>
-            </div>
-
-            <div>
-              mass:
-              <select name="Mass">
-                <option value="G">gram</option>
-                <option value="Hg">hgram</option>
-                <option value="Kg">kgram</option>
-              </select>
-            </div>
-
-            <div>
-              P:
-              <input type="text" value="1" name="P" />
-              Units:
-              <select name="Units">
-                <option value="ATM">atm</option>
-                <option value="BTM">btm</option>
-                <option value="CTM">ctm</option>
-                <option value="DTM">dtm</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="row3">
-            <div>
-              <p>Mass:</p>
-              <input type="text" name="M" />
-              <p>Species:</p>
-              <input type="text" value="si" name="React1" /> <span>+</span>
-            </div>
-            <div id="dernierReactif">
-              <span></span>
-              <input type="text" name="M" />
-              <span></span>
-              <input type="text" value="si" name="React2" />
-              <button type="button" onclick="ajouterReactif()">
-                Ajouter reactif
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="row4">
-          <div>
-            <div>
-              Output configuration
-            </div>
-
-            <div class="row4-col">
-              <div>
-                Concentration cut-off
-              </div>
-              <div>
-                Format
-              </div>
-              <div>
-                Distribution
-              </div>
-            </div>
-
-            <div class="row4-col">
-              <div>
-                <select name="">
-                  <option value="">1e-70</option>
-                </select>
-              </div>
-              <div>
-                <select name="">
-                  <option value="">Extended</option>
-                </select>
-              </div>
-              <div>
-                <select name="">
-                  <option value="">no</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <button type="button">Clear</button>
-          <button type="button">Default</button>
-          <button type="submit">Calculate >></button>
-        </div>
+    <div class="container">
+      <div class="row1">
+        Chemical equilibria of an ideal gas with pure solids and liquids
       </div>
-    </form>
-    <div id="dataTable"></div>
+      <div class="row2">
+
+        <div> 
+            
+                <input type="hidden" name="PROGRAM" value="EQUILIB" />
+                T:
+                  <input type="text" value="1000" name="TMIN">
+                Units:
+                <select name="Units">
+                  <option value="K">K</option>
+                  <option value="g">G</option>
+                  <option value="cg">Cg</option>
+                  <option value="mg">Mg</option>
+                </select>
+        </div>
+            
+        <div> 
+                mass:
+                <select name="Mass">
+                  <option value="G">gram</option>
+                  <option value="Hg">hgram</option>
+                  <option value="Kg">kgram</option>
+                </select>
+        </div>
+
+        <div> 
+                P: 
+                  <input type="text" value="1" name="P">
+                Units:
+                <select name="Units">
+                  <option value="ATM">atm</option>
+                  <option value="BTM">btm</option>
+                  <option value="CTM">ctm</option>
+                  <option value="DTM">dtm</option>
+                </select>
+        </div>
+
+      </div>
+
+      <div class="row3">
+          <div> 
+                  Mass 
+                  <br>
+                    <input type="text" name="M">
+                  </br>
+                  Mass 
+                  <br>
+                    <input type="text" name="M">
+                  </br>
+          </div>
+
+          <div> 
+                  Species 
+                  <br>
+                    <input type="text" value="si" name="S"> +
+                  </br>
+                  Species 
+                  <br>
+                    <input type="text" value="si" name="S">
+                    <button type="button">+</button>
+                  </br>
+          </div>
+      </div>
+
+      <div class="row4">
+        <div>
+          <div>
+            Output
+          </div>
+
+          <div class="row4-col">
+              <div>
+                  Concentration cut-off
+              </div>
+              <div>
+                  Format
+              </div>
+              <div>
+                  Distribution
+              </div>
+          </div>
+
+          <div class="row4-col">
+                <div>
+                    <select name="">
+                        <option value="">1e-70</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="">
+                        <option value="">Extended</option>
+                    </select>
+                </div>
+                <div>
+                    <select name="">
+                        <option value="">no</option>
+                    </select>
+                </div>
+            </div>
+          </div>
+          <div>
+                <button type="reset">Clear</button>
+                <button type="reset">Default</button>
+                <button type="submit">Calculate >></button>
+              </div>
+        </div>
+        </form>
+    </div>
+    <div id="dataTable">
+      
+    </div>
   </body>
 </html>

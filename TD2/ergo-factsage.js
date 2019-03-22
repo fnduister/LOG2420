@@ -1,4 +1,5 @@
 const exponentialValue = 4;
+let reactif = 2;
 
 const handleSubmit = async formElement => {
   event.preventDefault();
@@ -120,4 +121,25 @@ const createOutputTable = outputData => {
       </tr>`;
   }
   return outputTable + "</table>";
+};
+
+const ajouterReactif = () => {
+  event.preventDefault();
+  const reactifRow = document.querySelector(".row3");
+  const dernierReactif = document.querySelector("#dernierReactif");
+  const nouveauReactifDiv = document.createElement("DIV");
+  nouveauReactifDiv.id = `React${reactif}`;
+  nouveauReactifDiv.innerHTML = `<span></span>
+  <input type="text" name="M" />
+  <span></span>
+  <input type="text" value="" name="Reactif${reactif}" />
+  <button type="button" onclick="retirerReactif(${reactif++})">retirer</button>
+`;
+  reactifRow.insertBefore(nouveauReactifDiv, dernierReactif);
+};
+
+const retirerReactif = id => {
+  const reactifRow = document.querySelector(".row3");
+  const divARetirer = document.querySelector(`#React${id}`);
+  reactifRow.removeChild(divARetirer);
 };

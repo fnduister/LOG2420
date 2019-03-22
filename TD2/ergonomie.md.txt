@@ -1,0 +1,29 @@
+Georges Parfait DJIMEFO KAPEN (1934188)
+Fabrice Ndui Ntoutoume (1914377)
+
+
+1.Charge de travail – densité informationnelle
+
+Problème :
+Imaginons que l’utilisateur entre beaucoup d’informations sur le bloc (Mass et Species), autant il y aura d’entrées, autant il y aura de réplications de Mass et Species. Ce qui devient lourd à la longue et représente ainsi une densité d’information.
+
+Solution :
+Il faudra juste garder une seule appellation de Mass et Species, et reproduire uniquement les cases autant de fois qu’il y aura des entrées de la part de l’utilisateur.
+	
+
+2.Similarité (Principes de Gestalt)
+
+Problème :
+Nous remarquons que le premier bloc des inputs et celui des outputs ont des fonds de couleur presque identiques, ce qui laisserait croire qu’ils appartiennent au même ensemble, qu’ils sont similaires.
+
+Solution :
+Pour démarquer les deux ensembles, il serait pertinent de considérer des couleurs de fond différentes pour traduire la dissimilarité entre ces groupes (input et output).
+
+
+3.Proximité (Principes de Gestalt)
+
+Problème :
+Nous remarquons aussi que les boutons (clear, default, calculate) se trouvent proches du bloc des outputs et pourtant elles sont opérationnelles pour l’ensemble des blocs. Ce qui crée une confusion sur la signifiance proprement dite de ces boutons par leur proximité avec la section des outputs selon le principe de Gestalt.
+
+Solution :
+Afin de donner un caractère universel à ces boutons, nous pouvons les placer dans une section distincte. Ainsi, elles véhiculeront une signification générale.

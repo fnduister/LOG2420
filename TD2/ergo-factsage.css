@@ -1,10 +1,19 @@
 .container {
   display: grid;
-  grid-template-rows: rep(4, auto);
-  grid-gap: 5px;
+  grid-gap: 10px;
   padding: 8px;
   background-color: lightgrey;
   border: solid black 1px;
+  width: 90vw;
+  min-width: 600px;
+  margin: auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 50vw;
+    margin: auto;
+  }
 }
 
 .row1 {
@@ -15,29 +24,52 @@
 .row2 {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  background-color: yellow;
   justify-content: start center end;
-  border: solid black 2px;
   padding: 4px;
-  font-size: 1.25em;
-  font-weight: bold;
+}
+
+.row2 > div {
+  padding: 0 1em;
 }
 
 .row3 {
   display: grid;
-  grid-template-columns: repeat(2, auto);
   background-color: lightgoldenrodyellow;
-  border: solid black 2px;
   justify-content: start start;
-  border: solid black 2px;
   padding: 8px;
+}
+
+@media screen and (max-width: 1200px) {
+}
+
+.row3 > div {
+  grid-template-columns: 50px 4fr 70px 4fr 1fr;
+  display: grid;
+  grid-gap: 10px;
+  height: 50px;
+  align-items: center;
+}
+.container input,
+select {
+  height: 20px;
+  margin: 0;
+}
+
+#inputZone {
+  display: grid;
+  grid-gap: 10px;
+  border: solid black 1px;
+  background-color: antiquewhite;
+  padding: 10px 5px;
+  font-weight: bold;
+  font-size: 1.25em;
 }
 
 .row4 {
   display: grid;
-  grid-template-columns: repeat(2, auto);
-  background-color: rgb(243, 193, 30);
-  border: solid black 2px;
+  background-color: #f0da92;
+  border: solid black 1px;
+  grid-template-columns: 2fr 1fr;
   padding: 8px;
   grid-gap: 5px;
 }
@@ -45,8 +77,6 @@
 .row4 > div:nth-child(1) {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  background-color: yellow;
-  border: solid black 1px;
   justify-content: start start start;
   padding: 8px;
 }
