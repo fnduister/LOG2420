@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <script type="text/javascript" src="message.js"></script>
+    <script type="text/javascript" src="channel.js"></script>
+    <script type="text/javascript" src="messagesObserver.js"></script>
+    <script type="text/javascript" src="channelsObserver.js"></script>
+    <script type="text/javascript" src="connectionHandler.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <meta charset="UTF-8">
+</head>
+    <body onload="updateUsername()"
+        <h2>Equipe 18 -- TD2</h2>
+        <div class="windowBoard">
+            <div class="fullboard">
+                <div class="topBanner">
+                    <div onclick="location.reload()" class="appNameBox">
+                        <img src="PolyChat.png" />
+                    </div>
+                    <div class="topBanner topBannerIconBoxContainer">
+                        <div class="iconBox">
+                            <i class="far fa-user"></i>
+                            <p id="usernameText">username</p>
+                        </div>
+                        <div class="iconBox">
+                            <i class="far fa-bell"></i>
+                            <p id="unreadMsgs"></p>
+                        </div>
+                        <div class="iconBox">
+                            <i class="fas fa-globe"></i>
+                            <p></p>
+                        </div>
+                        <div class="iconBox">
+                            <i class="fas fa-cog"></i>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatAppBoard">
+                    <div class="chatTextViewBoard">
+                        <div class="chatBanner">
+                            <p>Groupe Actif: </p> <br>
+                            <div class="chatBannerActiveGroup">
+                                <h2 id="groupeActif"></h2>
+                            </div>
+                        </div>
+                        <div class="chatViewBox">
+                            <div id="chat"class="chatTextBox">
+                            </div>
+                            <div class="chatInputBoard" >
+                                <div class="chatInputBox">
+                                    <div class="chatInputThumbsUpBox">
+                                        <i class="far fa-thumbs-up"></i>
+                                    </div>
+                                    <textarea id="messageInput" placeholder="Votre message ici..."></textarea>
+                                    <div class="chatSendBox" onclick="sendMessage()">
+                                        Envoyer
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chatChannelViewBoard">
+                        <div class="chatBanner">
+                            <p>Liste Des Groupes</p>
+                            <div class="chatBannerChannelContainer">
+                                <h2>Groupe Disponibles</h2>
+                                <div class="chatBannerIconBox" onclick="createChannel()">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <div class="chatBannerIconBox">
+                                    <div class="tooltipContainer">
+                                       <div>Son desactive:</div> 
+                                       <div><input type="checkbox" onclick="changeSoundSetting()"></div>
+                                    </div>
+                                    <i class="fas fa-cog"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="channels" class="chatChannelBoardContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
