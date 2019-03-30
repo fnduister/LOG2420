@@ -3,17 +3,26 @@
 class ConnectionHandler {
   constructor(user) {
     this.user = user;
-    this.currentChannelId = "invalid";
-    this.generalChannelId = "invalid";
     this.isClosed = false;
     this.websocket = null;
+    this.message = null;
+    this.channelObserver = new ChannelsObserver();
   }
 
+  dispatchEvent = event => {
+    this.message = JSON.parse(event.data);
+    const type = this.message["eventType"];
+    switch (type) {
+      case "updateChannelsList":
+        this.channelObserver.updateChannelsList(this.message.data);
+        break;
+    }
+  };
   start = async () => {
     try {
       await this.connect();
       this.websocket.onmessage = event => {
-        console.log(event.data);
+        this.dispatchEvent(event);
       };
     } catch (err) {
       console.log({ err });
@@ -34,5 +43,5 @@ class ConnectionHandler {
     });
   };
 
-  handleMessage = (event) => {};
+  handleMessage = event => {};
 }

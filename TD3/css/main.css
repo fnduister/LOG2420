@@ -136,7 +136,7 @@ section {
   border-left: solid 1px rgb(219, 217, 217);
 }
 
-#group-wrapper {
+.group-wrapper {
   /* background-color: #e4f0fd; */
   padding: 0.2em 1em;
   margin-bottom: 2em;
