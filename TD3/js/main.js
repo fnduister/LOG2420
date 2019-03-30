@@ -7,3 +7,7 @@ server.start();
 //   console.log(event.data);
 //   console.log("hello bro");
 // };
+
+const joinChannel = id => {
+    const message = new Message()
+}

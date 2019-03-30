@@ -7,16 +7,26 @@ class ChannelsObserver {
   }
 
   updateChannelsList = channels => {
-      console.log({ channels });
-      if()
-    const newChannels = channels.filter(c => !channelsIDList.includes(c));
-    for (const channel of channels) {
-      if (channel.joinStatus) {
-        addGeneralChannel(channel.id, channel.name);
-      } else {
-        addNonActiveChannel(channel.id, channel.name);
+    let newChannels = channels; //on sauvegarde les channels venant du serveur pour la premier visite
+    if (this.channelsIDList.length) {
+      //on recupere seulement les nouveaux channels
+      newChannels = channels.filter(c => !this.channelsIDList.includes(c));
+    }
+    if (newChannels) {
+      for (const channel of newChannels) {
+        this.channelsIDList.push(channel.id); //on sauvegarde l'id pour etre sure de ne pas le rerender inutilement
+        if (channel.joinStatus) {
+          if (channel.name == "Général") {
+            addGeneralChannel(channel.id, "Général");
+          } else {
+            addActiveChannel(channel.id, channel.name);
+          }
+        } else {
+          addNonActiveChannel(channel.id, channel.name);
+        }
       }
     }
+    console.log(this.channelsIDList);
     return null;
   };
 }
@@ -45,8 +55,7 @@ const addActiveChannel = (channelId, channelName) => {
               />
         </button>
         <h4>${channelName}</h4>
-        </div>
-    <div class="group-info">`;
+        </div>`;
   return null;
 };
 

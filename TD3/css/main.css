@@ -117,7 +117,7 @@ section {
 }
 
 .receiving .date {
-  color: rgba(255, 255, 255,.5);
+  color: rgba(255, 255, 255, 0.5);
 }
 .message .sender {
   color: rgb(94, 173, 238);
@@ -158,6 +158,12 @@ section {
   margin: 0 0.5em 0.1em;
 }
 
+.group-info button:first-child :hover {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+
 .active-group {
   background-color: rgb(172, 223, 243) !important;
 }
@@ -171,6 +177,7 @@ section {
   align-items: center;
   /* margin-bottom: 0.5em; */
   padding: 0.5em;
+  margin-bottom: 0.1em;
   background-color: #e4f0fd;
 }
 
