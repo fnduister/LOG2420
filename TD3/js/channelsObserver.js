@@ -3,11 +3,13 @@ class ChannelsObserver {
   constructor() {
     this.currentChannelId = "invalid";
     this.generalChannelId = "invalid";
-    this.channelsIDList;
+    this.channelsIDList = [];
   }
 
   updateChannelsList = channels => {
-    console.log({ channels });
+      console.log({ channels });
+      if()
+    const newChannels = channels.filter(c => !channelsIDList.includes(c));
     for (const channel of channels) {
       if (channel.joinStatus) {
         addGeneralChannel(channel.id, channel.name);
