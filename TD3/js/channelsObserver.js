@@ -38,6 +38,24 @@ class ChannelsObserver {
       console.log("first render");
       this.firstRender(channels);
     } else {
+      if (newNonActiveChannels.length < this.state.nonActiveChannels.length) {
+        for (const channel of this.state.nonActiveChannels) {
+          if (!this.containsChannel(channel, newNonActiveChannels)) {
+            console.log({ "removing this non active element": channel });
+            removeNonActiveChannel(channel.id);
+          }
+        }
+      }
+
+      if (newActiveChannels.length < this.state.activeChannels.length) {
+        for (const channel of this.state.activeChannels) {
+          if (!this.containsChannel(channel, newActiveChannels)) {
+            console.log({ "removing this active element": channel });
+            removeActiveChannel(channel.id);
+          }
+        }
+      }
+
       if (newActiveChannels.length > this.state.activeChannels.length) {
         console.log({
           prev: this.state.activeChannels,
@@ -50,37 +68,14 @@ class ChannelsObserver {
             addActiveChannel(channel.id, channel.name);
           }
         }
-      } else {
-        for (const channel of this.state.activeChannels) {
-          if (!this.containsChannel(channel, newActiveChannels)) {
-            console.log({ "removing this active element": channel });
-            removeActiveChannel(channel.id);
-          }
-        }
       }
 
       if (newNonActiveChannels.length > this.state.nonActiveChannels.length) {
-        console.log({
-          prev: this.state.nonActiveChannels,
-          next: newNonActiveChannels
-        });
         console.log("adding NonActive element");
         for (const channel of newNonActiveChannels) {
           if (!this.containsChannel(channel, this.state.nonActiveChannels)) {
             console.log({ "adding this non active channel: ": channel });
             addNonActiveChannel(channel.id, channel.name);
-          }
-        }
-      } else {
-        console.log("removing NonActive element");
-        console.log({
-          prev: this.state.nonActiveChannels,
-          next: newNonActiveChannels
-        });
-        for (const channel of this.state.nonActiveChannels) {
-          if (!this.containsChannel(channel, newNonActiveChannels)) {
-            console.log({ "removing this non active element": channel });
-            removeNonActiveChannel(channel.id);
           }
         }
       }
@@ -106,10 +101,8 @@ const addGeneralChannel = (channelId, channelName) => {
 let addActiveChannel = (channelId, channelName) => {
   console.log("render active channel");
   console.log(channelId, channelName);
-  const ele = document.getElementById("activeChannels");
-  // ele.innerHTML += `<p> ok mec tu veux quoi</p> ${channelId} ${channelName}`;
-  ele.innerHTML += `
-  <div class="group-info" >
+  document.getElementById("activeChannels").innerHTML += `
+  <div class="group-info" id=${channelId}>
     <button type="button" onClick="leaveChannel(this)" data-id=${channelId}>
       <img
         src="imgs/baseline-remove_circle-orange-24px.svg"
@@ -130,9 +123,9 @@ let removeActiveChannel = id => {
 let addNonActiveChannel = (channelId, channelName) => {
   console.log("render non active channel");
   console.log(channelId);
-  const ele = document.getElementById("nonActiveChannels");
-  ele.innerHTML += "yooooo";
-  ele.innerHTML += `<div class="group-info" id=${channelId}>
+  document.getElementById(
+    "nonActiveChannels"
+  ).innerHTML += `<div class="group-info" id=${channelId}>
         <button type="button" onClick="joinChannel(this)" data-id=${channelId}>
         <img
             src="imgs/baseline-add_circle-green-24px.svg"
