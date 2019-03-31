@@ -8,6 +8,12 @@ server.start();
 //   console.log("hello bro");
 // };
 
-const joinChannel = id => {
-    const message = new Message()
-}
+const leaveChannel = obj => {
+  const message = new Message("onLeaveChannel", obj.dataset.id);
+  server.send(message);
+};
+
+const joinChannel = obj => {
+  const message = new Message("onJoinChannel", obj.dataset.id);
+  server.send(message);
+};

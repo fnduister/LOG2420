@@ -77,7 +77,8 @@ function getChannel(channelId, joined, changed)
 		if(!isClosed)
 			websocket.send(JSONmessage);
 		else
-			alert("Connection closed");	}
+			alert("Connection closed");
+	}
 }
 
 /**

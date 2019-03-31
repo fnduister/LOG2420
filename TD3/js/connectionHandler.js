@@ -18,15 +18,27 @@ class ConnectionHandler {
         break;
     }
   };
+
   start = async () => {
     try {
       await this.connect();
+      this.websocket.onclose = () => {
+        this.isClosed = true;
+        alert("Connection closed");
+      };
       this.websocket.onmessage = event => {
         this.dispatchEvent(event);
       };
     } catch (err) {
       console.log({ err });
     }
+  };
+
+  send = message => {
+    const JSONmessage = JSON.stringify(message);
+    if (!this.isClosed) {
+      this.websocket.send(JSONmessage);
+    } else alert("Connection closed");
   };
 
   connect = () => {
