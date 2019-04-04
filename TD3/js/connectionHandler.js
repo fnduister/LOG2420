@@ -7,14 +7,38 @@ class ConnectionHandler {
     this.websocket = null;
     this.message = null;
     this.channelObserver = new ChannelsObserver();
+    this.messageObserver;
   }
 
   dispatchEvent = event => {
     this.message = JSON.parse(event.data);
     const type = this.message["eventType"];
+    console.log(this.message);
     switch (type) {
       case "updateChannelsList":
         this.channelObserver.updateChannelsList(this.message.data);
+        if (!this.channelObserver.currentChannelId) {
+          this.channelObserver.currentChannelId = this.channelObserver.generalChannelId;
+          this.messageObserver = new MessageObserver(
+            this.user,
+            this.channelObserver.currentChannelId
+          );
+          this.send(
+            new Message("onGetChannel", this.channelObserver.currentChannelId)
+          );
+        }
+        break;
+      case "onMessage":
+        if ((this.channelObserver.currentChannelId = this.message.channelId))
+          this.messageObserver.addNewMessage(this.message);
+        this.channelObserver.updateChannelWaitingMessages(this.message.channelId);
+        break;
+      case "onCreateChannel":
+        this.channelObserver.createChannel(this.message.data);
+        break;
+      case "onGetChannel":
+        if ((this.channelObserver.currentChannelId = this.message.channelId))
+          this.messageObserver.updateMessagesList(this.message.data);
         break;
     }
   };
@@ -24,10 +48,13 @@ class ConnectionHandler {
       await this.connect();
       this.websocket.onclose = () => {
         this.isClosed = true;
-        alert("Connection closed");
+        alert("The connection was closed");
       };
       this.websocket.onmessage = event => {
         this.dispatchEvent(event);
+      };
+      this.websocket.onerror = event => {
+        alert("an error appeared");
       };
     } catch (err) {
       console.log({ err });

@@ -1,17 +1,26 @@
 "use strict";
 class ChannelsObserver {
   constructor() {
-    this.currentChannelId = "invalid";
+    this.currentChannelId;
     this.generalChannelId = "invalid";
-    this.state = { activeChannels: [], nonActiveChannels: [] };
+    this.state = {
+      activeChannels: [],
+      nonActiveChannels: [],
+      waitingMessages: {}
+    };
     this.render = false;
   }
+
+  createChannel = info => {
+    console.log({ info });
+  };
 
   firstRender = channels => {
     for (const channel of channels) {
       if (channel.joinStatus) {
         if (channel.name == "Général") {
           addGeneralChannel(channel.id, "Général");
+          this.generalChannelId = channel.id;
         } else {
           addActiveChannel(channel.id, channel.name);
         }
@@ -31,17 +40,25 @@ class ChannelsObserver {
     return false;
   };
 
+  updateChannelWaitingMessages = channelID => {
+    if (this.state.waitingMessages[channelID] != null)
+      this.state.waitingMessages[channelID]++;
+    else {
+      this.state.waitingMessages[channelID] = 1;
+    }
+    this.notification(channelID);
+    console.log({ state: this.state });
+  };
+
   updateChannelsList = channels => {
     const newActiveChannels = channels.filter(c => c.joinStatus);
     const newNonActiveChannels = channels.filter(c => !c.joinStatus);
     if (!this.state.activeChannels.length) {
-      console.log("first render");
       this.firstRender(channels);
     } else {
       if (newNonActiveChannels.length < this.state.nonActiveChannels.length) {
         for (const channel of this.state.nonActiveChannels) {
           if (!this.containsChannel(channel, newNonActiveChannels)) {
-            console.log({ "removing this non active element": channel });
             removeNonActiveChannel(channel.id);
           }
         }
@@ -50,31 +67,22 @@ class ChannelsObserver {
       if (newActiveChannels.length < this.state.activeChannels.length) {
         for (const channel of this.state.activeChannels) {
           if (!this.containsChannel(channel, newActiveChannels)) {
-            console.log({ "removing this active element": channel });
             removeActiveChannel(channel.id);
           }
         }
       }
 
       if (newActiveChannels.length > this.state.activeChannels.length) {
-        console.log({
-          prev: this.state.activeChannels,
-          next: newActiveChannels
-        });
-        console.log("adding active element");
         for (const channel of newActiveChannels) {
           if (!this.containsChannel(channel, this.state.activeChannels)) {
-            console.log({ "adding this active channel: ": channel });
             addActiveChannel(channel.id, channel.name);
           }
         }
       }
 
       if (newNonActiveChannels.length > this.state.nonActiveChannels.length) {
-        console.log("adding NonActive element");
         for (const channel of newNonActiveChannels) {
           if (!this.containsChannel(channel, this.state.nonActiveChannels)) {
-            console.log({ "adding this non active channel: ": channel });
             addNonActiveChannel(channel.id, channel.name);
           }
         }
@@ -83,6 +91,11 @@ class ChannelsObserver {
     this.state.activeChannels = newActiveChannels;
     this.state.nonActiveChannels = newNonActiveChannels;
     return null;
+  };
+
+  notification = channelId => {
+    const channel = document.querySelector(`#${channelId} #notification`);
+    channel.innerText = this.state.waitingMessages[channelId];
   };
 }
 const addGeneralChannel = (channelId, channelName) => {
@@ -94,13 +107,12 @@ const addGeneralChannel = (channelId, channelName) => {
         </button>
         <h4>${channelName}</h4>
         <button class="default-button">default</button>
+        <span id="notification"></span>
         </div>`;
   return null;
 };
 
 let addActiveChannel = (channelId, channelName) => {
-  console.log("render active channel");
-  console.log(channelId, channelName);
   document.getElementById("activeChannels").innerHTML += `
   <div class="group-info" id=${channelId}>
     <button type="button" onClick="leaveChannel(this)" data-id=${channelId}>
@@ -110,19 +122,15 @@ let addActiveChannel = (channelId, channelName) => {
       />
       </button>
     <h4>${channelName}</h4>
+    <span id="notification"></span>
   </div>`;
-  console.log("fin du render sans probleme");
 };
 
 let removeActiveChannel = id => {
-  console.log("removing active channel");
-  console.log(id);
   document.getElementById(id).remove();
 };
 
 let addNonActiveChannel = (channelId, channelName) => {
-  console.log("render non active channel");
-  console.log(channelId);
   document.getElementById(
     "nonActiveChannels"
   ).innerHTML += `<div class="group-info" id=${channelId}>
@@ -133,12 +141,11 @@ let addNonActiveChannel = (channelId, channelName) => {
         />
         </button>
         <h4>${channelName}</h4>
+        <span id="notification"></span>
     </div>`;
   return null;
 };
 
 let removeNonActiveChannel = id => {
-  console.log("removing non active channel");
-  console.log(id);
   document.getElementById(id).remove();
 };

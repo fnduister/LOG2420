@@ -45,42 +45,24 @@
             <button>
               <img src="imgs/baseline-settings-white-20px.svg" alt="settings" />
             </button>
-            <button>
+            <button id="toggleFormVisibility" onclick="handleFormVisibility()">
               <img src="imgs/baseline-add-white-24px.svg" alt="settings" />
             </button>
           </div>
         </div>
       </div>
-      <div id="chat-zone">
-        <div class="message">
-          <h6 class="sender">robot</h6>
-          <p>alors voici ce que je voulais te dire depuis la</p>
-          <h6 class="date">il y a 3 min</h6>
-        </div>
-        <div class="message">
-          <h6 class="sender">robot</h6>
-          <p>
-            je ne pense qu'il faut faire des chose qu'on ne veut pas faire
-            seulement parce qu'on veut le faire pourtant, ce n'est pas ce qu'il
-            faut que tu comprennes
-          </p>
-          <h6 class="date">il y a 3 min</h6>
-        </div>
-        <div class="message">
-          <h6 class="sender">gloves</h6>
-          <p>alors voici ce que je voulais te dire depuis la</p>
-          <h6 class="date">il y a 3 min</h6>
-        </div>
-        <div class="message receiving">
-          <p>alors voici ce que je voulais te dire depuis la</p>
-          <h6 class="date">12h55</h6>
-        </div>
-        <div class="message receiving">
-          <p>ok</p>
-          <h6 class="date">13h30</h6>
-        </div>
-      </div>
+      <div id="chat-zone"></div>
       <div id="group-zone">
+        <form
+          id="adding-channel"
+          class="group-wrapper"
+          onsubmit="createChannel(this)"
+        >
+          <input type="text" placeholder="enter a name..." />
+          <button type="submit">
+            Confirmer
+          </button>
+        </form>
         <div id="activeChannels" class="group-wrapper">
           <div class="group-zone-title">
             <h3>salles actives</h3>
@@ -90,15 +72,15 @@
           <h3>joindre un groupe</h3>
         </div>
       </div>
-      <div id="text-zone">
+      <form id="text-zone" onsubmit="sendNewMessage()">
         <button>
           <img src="imgs/baseline_thumb_up_white_18dp.png" alt="settings" />
         </button>
-        <div><p>Type a message...</p></div>
-        <button>
+        <input id="message-input" placeholder="Type a message..." />
+        <button type="submit">
           <h3>Envoyer</h3>
         </button>
-      </div>
+      </form>
     </section>
   </body>
 </html>
