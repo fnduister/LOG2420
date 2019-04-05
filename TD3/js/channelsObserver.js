@@ -41,13 +41,21 @@ class ChannelsObserver {
   };
 
   updateChannelWaitingMessages = channelID => {
-    if (this.state.waitingMessages[channelID] != null)
+    console.log({ newChannel: channelID, current: this.currentChannelId });
+    if (this.state.waitingMessages[channelID] != null) {
       this.state.waitingMessages[channelID]++;
-    else {
+    } else {
       this.state.waitingMessages[channelID] = 1;
     }
-    this.notification(channelID);
-    console.log({ state: this.state });
+    console.log({
+      notifying: channelID,
+      value: this.state.waitingMessages[channelID]
+    });
+    if (channelID != this.currentChannelId) {
+      this.notification(channelID);
+      // setTimeout(() => this.notification(channelID), 1000);
+      // this.updateGlobalNotification();
+    }
   };
 
   updateChannelsList = channels => {
@@ -60,6 +68,7 @@ class ChannelsObserver {
         for (const channel of this.state.nonActiveChannels) {
           if (!this.containsChannel(channel, newNonActiveChannels)) {
             removeNonActiveChannel(channel.id);
+            this.state.waitingMessages[channel.id] = null;
           }
         }
       }
@@ -94,10 +103,21 @@ class ChannelsObserver {
   };
 
   notification = channelId => {
-    const channel = document.querySelector(`#${channelId} #notification`);
+    console.log({
+      notifying: channelId,
+      value: this.state.waitingMessages[channelId]
+    });
+    const channel = document.querySelector(`#notification-${channelId}`);
     channel.innerText = this.state.waitingMessages[channelId];
   };
+
+  updateGlobalNotification = () => {
+    const notifications = document.querySelector("#notifications span");
+    if (this.state.waitingMessages.globalWaitingMessages)
+      notifications.innerText = this.state.waitingMessages.globalWaitingMessages;
+  };
 }
+
 const addGeneralChannel = (channelId, channelName) => {
   document.getElementById(
     "activeChannels"
@@ -107,7 +127,7 @@ const addGeneralChannel = (channelId, channelName) => {
         </button>
         <h4>${channelName}</h4>
         <button class="default-button">default</button>
-        <span id="notification"></span>
+        <span id="notification-${channelId}"></span>
         </div>`;
   return null;
 };
@@ -122,8 +142,8 @@ let addActiveChannel = (channelId, channelName) => {
       />
       </button>
     <h4>${channelName}</h4>
-    <span id="notification"></span>
-  </div>`;
+    <span id="notification-${channelId}"></span>
+    </div>`;
 };
 
 let removeActiveChannel = id => {
@@ -141,7 +161,7 @@ let addNonActiveChannel = (channelId, channelName) => {
         />
         </button>
         <h4>${channelName}</h4>
-        <span id="notification"></span>
+        <span id="notification-${channelId}"></span>
     </div>`;
   return null;
 };

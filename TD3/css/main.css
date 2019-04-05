@@ -34,6 +34,10 @@ header img {
   height: 40px;
 }
 
+/***********************************************************/
+/* navigation zone */
+/***********************************************************/
+
 #navigation-icons {
   display: flex;
 }
@@ -41,6 +45,24 @@ header img {
 #navigation-icons button {
   background-color: transparent;
   border: none;
+  position: relative;
+}
+
+#notifications {
+  background-color: transparent;
+  border: none;
+  position: relative;
+}
+
+#notifications span {
+  position: absolute;
+  width: 15px;
+  padding: auto;
+  height: 15px;
+  font-size: 9px;
+  top: 10px;
+  left: 13.5px;
+  color: pink;
 }
 
 #navigation-icons img {

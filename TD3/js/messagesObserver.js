@@ -10,7 +10,6 @@ class MessageObserver {
   }
 
   addNewMessage = message => {
-    console.log({ message });
     if (message.sender != this.user) {
       addReceivedMessage(message);
     } else {
@@ -21,7 +20,6 @@ class MessageObserver {
   };
 
   updateMessagesList = data => {
-    console.log({ data });
     this.messageList = data.messages;
     for (const message of this.messageList) {
       this.addNewMessage(message);
@@ -46,7 +44,6 @@ const convertTime = timestamp => {
 const addReceivedMessage = messageInfo => {
   const chatZone = document.getElementById("chat-zone");
   let admin = null;
-  console.log({ messageInfo });
   if (messageInfo.sender == "Admin") {
     admin = "admin";
   }

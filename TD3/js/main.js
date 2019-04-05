@@ -15,7 +15,6 @@ const joinChannel = obj => {
 
 const scrollDown = () => {
   const chatZone = document.getElementById("chat-zone");
-  console.log({ height: chatZone.scrollHeight });
   chatZone.scrollTo(0, chatZone.scrollHeight);
 };
 

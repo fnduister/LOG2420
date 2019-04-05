@@ -13,9 +13,9 @@ class ConnectionHandler {
   dispatchEvent = event => {
     this.message = JSON.parse(event.data);
     const type = this.message["eventType"];
-    console.log(this.message);
     switch (type) {
       case "updateChannelsList":
+        console.log("updateChannelList");
         this.channelObserver.updateChannelsList(this.message.data);
         if (!this.channelObserver.currentChannelId) {
           this.channelObserver.currentChannelId = this.channelObserver.generalChannelId;
@@ -29,14 +29,19 @@ class ConnectionHandler {
         }
         break;
       case "onMessage":
-        if ((this.channelObserver.currentChannelId = this.message.channelId))
+        console.log("onMessage");
+        if (this.channelObserver.currentChannelId == this.message.channelId)
           this.messageObserver.addNewMessage(this.message);
-        this.channelObserver.updateChannelWaitingMessages(this.message.channelId);
+        this.channelObserver.updateChannelWaitingMessages(
+          this.message.channelId
+        );
         break;
       case "onCreateChannel":
+        console.log("onCreateChannel");
         this.channelObserver.createChannel(this.message.data);
         break;
       case "onGetChannel":
+        console.log("onGetChannel");
         if ((this.channelObserver.currentChannelId = this.message.channelId))
           this.messageObserver.updateMessagesList(this.message.data);
         break;

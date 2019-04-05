@@ -88,7 +88,7 @@ function getChannel(channelId, joined, changed)
 function joinChannel(channelId)
 {
 	var message = new Message("onJoinChannel",channelId, null, user, Date());
-	var JSONmessage = JSON.stringify(message);
+	var JSONmessage = JSON.stringify(message); 
 	nbrOfUnreadMsg.set(channelId,0);
 	if(!isClosed)
 		websocket.send(JSONmessage);
