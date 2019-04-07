@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket Chat Demo</title>
+    <meta charset="utf-8" />
+    <link href="css/main.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/message.js"></script>
+    <script type="text/javascript" src="js/channel.js"></script>
+    <script type="text/javascript" src="js/messagesObserver.js"></script>
+    <script type="text/javascript" src="js/channelsObserver.js"></script>
+    <script type="text/javascript" src="js/connectionHandler.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <div><img src="imgs/polychat-icon.gif" alt="polychat icon" /></div>
+      <div id="navigation-icons">
+          <div id="language" onclick="changeText()" >
+              English
+          </div>
+          
+        <button>
+          <img src="imgs/baseline-settings-20px.svg" alt="settings" />
+        </button>
+        <button class="btn">
+          <img src="imgs/baseline-perm_identity-24px.svg" alt="settings" />
+        </button>
+        <button class="btn" id="notifications">
+          <img
+            src="imgs/baseline-notifications_active-24px.svg"
+            alt="settings"
+          /><span></span>
+        </button>
+        <button class="btn">
+          <img src="imgs/baseline-language-24px.svg" alt="settings" />
+        </button>
+      </div>
+    </header>
+    <section>
+      <div id="chat-title">
+        <h4 id="chat-title1">Groupe actif:</h4>
+        <h3 id="chat-title2">Equipe 1</h3>
+      </div>
+      <div id="group-title">
+        <h4 id="group-title1">Liste des groupes</h4>
+        <div id="groupe-disponible">
+          <h3 id="groupe-disponible1">Groupes disponibles</h3>
+          <div>
+            <button>
+              <img src="imgs/baseline-settings-white-20px.svg" alt="settings" />
+            </button>
+            <button id="toggleFormVisibility" onclick="handleFormVisibility()">
+              <img src="imgs/baseline-add-white-24px.svg" alt="settings" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="chat-zone"></div>
+      <div id="group-zone">
+        <form
+          id="adding-channel"
+          class="group-wrapper"
+          onsubmit="createChannel(this)"
+        >
+          <input id="adding-channel1" type="text" placeholder="entrer un nom..." />
+          <button id="adding-channel2" type="submit">
+            Confirmer
+          </button>
+        </form>
+        <div id="activeChannels" class="group-wrapper">
+          <div class="group-zone-title">
+            <h3 id="group-zone-title1">salles actives</h3>
+          </div>
+        </div>
+        <div id="nonActiveChannels" class="group-wrapper">
+          <h3 id="nonActiveChannels1">joindre un groupe</h3>
+        </div>
+      </div>
+      <form id="text-zone" onsubmit="sendNewMessage()">
+        <button>
+          <img src="imgs/baseline_thumb_up_white_18dp.png" alt="settings" />
+        </button>
+        <input id="message-input" placeholder="Taper un message..." />
+        <button type="submit">
+          <h3 id="message-input1">Envoyer</h3>
+        </button>
+      </form>
+    </section>
+    <script>
+        function changeText() {
+          if (document.getElementById("language").innerHTML == "English") {
+            document.getElementById("language").innerHTML = "Français";
+            document.getElementById("chat-title1").innerHTML = "Active group";
+            document.getElementById("chat-title2").innerHTML = "Team 1";
+            document.getElementById("group-title1").innerHTML = "List of groups";
+            document.getElementById("groupe-disponible1").innerHTML = "Available groups";
+            document.getElementById("adding-channel1").placeholder = "enter a name...";
+            document.getElementById("adding-channel2").innerHTML = "Confirm";
+            document.getElementById("group-zone-title1").innerHTML = "Active rooms";
+            document.getElementById("nonActiveChannels1").innerHTML = "join a group";
+            document.getElementById("message-input").placeholder = "write a message...";
+            document.getElementById("message-input1").innerHTML = "Send";
+          }
+          else {
+            document.getElementById("language").innerHTML = "English";
+            document.getElementById("chat-title1").innerHTML = "Groupe actif";
+            document.getElementById("chat-title2").innerHTML = "Equipe 1";
+            document.getElementById("group-title1").innerHTML = "Liste des groupes";
+            document.getElementById("groupe-disponible1").innerHTML = "Groupes disponibles";
+            document.getElementById("adding-channel1").placeholder = "entrer un nom...";
+            document.getElementById("adding-channel2").innerHTML = "Confirmer";
+            document.getElementById("group-zone-title1").innerHTML = "salles actives";
+            document.getElementById("nonActiveChannels1").innerHTML = "joindre un groupe";
+            document.getElementById("message-input").placeholder = "Taper un message...";
+            document.getElementById("message-input1").innerHTML = "Envoyer";
+          }
+           
+        }
+        </script>
+  </body>
+</html>
