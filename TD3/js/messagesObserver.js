@@ -9,6 +9,7 @@ class MessageObserver {
     this.messageList = [];
   }
 
+  //ajoute un nouveau message
   addNewMessage = message => {
     if (message.sender != this.user) {
       addReceivedMessage(message);
@@ -25,6 +26,11 @@ class MessageObserver {
       this.addNewMessage(message);
     }
     updateActiveChannelName(data.name);
+  };
+
+  clear = () => {
+    const chatZone = document.getElementById("chat-zone");
+    chatZone.innerHTML = null;
   };
 }
 

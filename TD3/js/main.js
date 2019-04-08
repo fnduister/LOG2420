@@ -1,11 +1,18 @@
-var user = "fabrice";
-
-let server = new ConnectionHandler(user);
+var user = prompt("username");
+// const user = "fabrice";
+var server = new ConnectionHandler(user);
 server.start();
 
 const leaveChannel = obj => {
   const message = new Message("onLeaveChannel", obj.dataset.id);
   server.send(message);
+};
+
+const changeUser = () => {
+  user = prompt("change your username");
+  server.clear();
+  server = new ConnectionHandler(user);
+  server.start();
 };
 
 const joinChannel = obj => {
@@ -16,6 +23,20 @@ const joinChannel = obj => {
 const scrollDown = () => {
   const chatZone = document.getElementById("chat-zone");
   chatZone.scrollTo(0, chatZone.scrollHeight);
+};
+
+const thumbsUp = () => {
+  event.preventDefault();
+  const thumbsMessage = `👍🏻`;
+  server.send(
+    new Message(
+      "onMessage",
+      server.messageObserver.currentChannelId,
+      thumbsMessage,
+      ""
+    )
+  );
+  scrollDown();
 };
 
 const sendNewMessage = () => {
@@ -48,7 +69,6 @@ const handleFormVisibility = () => {
 };
 
 const createChannel = formElement => {
-  console.log({ form: formElement.elements[0].value });
   const newChannelName = formElement.elements[0].value;
   // const message = new Message("onCreateChannel", newChannelName);
   const message = new Message(
@@ -63,4 +83,3 @@ const createChannel = formElement => {
   handleFormVisibility();
   event.preventDefault();
 };
-

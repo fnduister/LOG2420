@@ -28,6 +28,7 @@ class ConnectionHandler {
           );
         }
         break;
+
       case "onMessage":
         console.log("onMessage");
         if (this.channelObserver.currentChannelId == this.message.channelId)
@@ -36,10 +37,12 @@ class ConnectionHandler {
           this.message.channelId
         );
         break;
+
       case "onCreateChannel":
         console.log("onCreateChannel");
         this.channelObserver.createChannel(this.message.data);
         break;
+
       case "onGetChannel":
         console.log("onGetChannel");
         if ((this.channelObserver.currentChannelId = this.message.channelId))
@@ -87,5 +90,8 @@ class ConnectionHandler {
     });
   };
 
-  handleMessage = event => {};
+  clear = () => {
+    this.messageObserver.clear();
+    this.channelObserver.clear();
+  };
 }

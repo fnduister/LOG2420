@@ -18,7 +18,7 @@
         <button>
           <img src="imgs/baseline-settings-20px.svg" alt="settings" />
         </button>
-        <button class="btn">
+        <button class="btn" onclick="changeUser()">
           <img src="imgs/baseline-perm_identity-24px.svg" alt="settings" />
         </button>
         <button class="btn" id="notifications">
@@ -63,19 +63,15 @@
             Confirmer
           </button>
         </form>
-        <div id="activeChannels" class="group-wrapper">
-          <div class="group-zone-title">
-            <h3>salles actives</h3>
-          </div>
-        </div>
-        <div id="nonActiveChannels" class="group-wrapper">
-          <h3>joindre un groupe</h3>
-        </div>
+        <h3 class="channel-title">salles actives</h3>
+        <div id="activeChannels" class="group-wrapper"></div>
+        <h3 class="channel-title">joindre un groupe</h3>
+        <div id="nonActiveChannels" class="group-wrapper"></div>
       </div>
       <form id="text-zone" onsubmit="sendNewMessage()">
-        <button>
+        <div id="thumbsUp" onclick="thumbsUp()">
           <img src="imgs/baseline_thumb_up_white_18dp.png" alt="settings" />
-        </button>
+        </div>
         <input id="message-input" placeholder="Type a message..." />
         <button type="submit">
           <h3>Envoyer</h3>

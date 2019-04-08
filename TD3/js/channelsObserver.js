@@ -6,7 +6,7 @@ class ChannelsObserver {
     this.state = {
       activeChannels: [],
       nonActiveChannels: [],
-      waitingMessages: {}
+      waitingMessages: { globalWaitingMessages: 0 }
     };
     this.render = false;
   }
@@ -40,21 +40,16 @@ class ChannelsObserver {
     return false;
   };
 
-  updateChannelWaitingMessages = channelID => {
-    console.log({ newChannel: channelID, current: this.currentChannelId });
-    if (this.state.waitingMessages[channelID] != null) {
-      this.state.waitingMessages[channelID]++;
+  updateChannelWaitingMessages = channelId => {
+    if (this.state.waitingMessages[channelId] != null) {
+      this.state.waitingMessages[channelId]++;
     } else {
-      this.state.waitingMessages[channelID] = 1;
+      this.state.waitingMessages[channelId] = 1;
     }
-    console.log({
-      notifying: channelID,
-      value: this.state.waitingMessages[channelID]
-    });
-    if (channelID != this.currentChannelId) {
-      this.notification(channelID);
-      // setTimeout(() => this.notification(channelID), 1000);
-      // this.updateGlobalNotification();
+    if (channelId != this.currentChannelId) {
+      this.notification(channelId);
+      // setTimeout(() => this.notification(channelId), 1000);
+      this.updateGlobalNotification();
     }
   };
 
@@ -76,7 +71,7 @@ class ChannelsObserver {
       if (newActiveChannels.length < this.state.activeChannels.length) {
         for (const channel of this.state.activeChannels) {
           if (!this.containsChannel(channel, newActiveChannels)) {
-            removeActiveChannel(channel.id);
+            this.removeActiveChannel(channel.id);
           }
         }
       }
@@ -103,21 +98,40 @@ class ChannelsObserver {
   };
 
   notification = channelId => {
-    console.log({
-      notifying: channelId,
-      value: this.state.waitingMessages[channelId]
-    });
     const channel = document.querySelector(`#notification-${channelId}`);
     channel.innerText = this.state.waitingMessages[channelId];
   };
 
   updateGlobalNotification = () => {
     const notifications = document.querySelector("#notifications span");
-    if (this.state.waitingMessages.globalWaitingMessages)
-      notifications.innerText = this.state.waitingMessages.globalWaitingMessages;
+    // if (this.state.waitingMessages.globalWaitingMessages)
+    notifications.innerText = ++this.state.waitingMessages
+      .globalWaitingMessages;
+  };
+
+  removeActiveChannel = id => {
+    document.getElementById(id).remove();
+    this.state.waitingMessages.globalWaitingMessages -=
+      this.state.waitingMessages[id] + 1;
+    this.state.waitingMessages[id] = 0;
+    this.updateGlobalNotification();
+  };
+
+  clear = () => {
+    const activeChannels = document.getElementById("activeChannels");
+    const nonActiveChannels = document.getElementById("nonActiveChannels");
+    activeChannels.innerHTML = null;
+    nonActiveChannels.innerHTML = null;
   };
 }
 
+/**
+ *
+ *
+ * @param {*} channelId
+ * @param {*} channelName
+ * @returns
+ */
 const addGeneralChannel = (channelId, channelName) => {
   document.getElementById(
     "activeChannels"
@@ -144,10 +158,6 @@ let addActiveChannel = (channelId, channelName) => {
     <h4>${channelName}</h4>
     <span id="notification-${channelId}"></span>
     </div>`;
-};
-
-let removeActiveChannel = id => {
-  document.getElementById(id).remove();
 };
 
 let addNonActiveChannel = (channelId, channelName) => {
