@@ -123,6 +123,13 @@ class ChannelsObserver {
     activeChannels.innerHTML = null;
     nonActiveChannels.innerHTML = null;
   };
+
+  setActiveChannel = id => {
+    const activeChannel = document.getElementById(id);
+    const oldActiveChannel = document.getElementById(this.currentChannelId);
+    oldActiveChannel.classList.remove("active-channel");
+    activeChannel.classList.add("active-channel");
+  };
 }
 
 /**
@@ -135,7 +142,7 @@ class ChannelsObserver {
 const addGeneralChannel = (channelId, channelName) => {
   document.getElementById(
     "activeChannels"
-  ).innerHTML += `<div class="group-info general active-channel" id="${channelId}">
+  ).innerHTML += `<div class="group-info general active-channel" onClick="changeCurrentChannel(this)" id="${channelId}">
         <button>
             <img src="imgs/baseline-lock-24px.svg" alt="default" />
         </button>
@@ -148,7 +155,7 @@ const addGeneralChannel = (channelId, channelName) => {
 
 let addActiveChannel = (channelId, channelName) => {
   document.getElementById("activeChannels").innerHTML += `
-  <div class="group-info" id=${channelId}>
+  <div class="group-info" onClick="changeCurrentChannel(this)" id=${channelId}>
     <button type="button" onClick="leaveChannel(this)" data-id=${channelId}>
       <img
         src="imgs/baseline-remove_circle-orange-24px.svg"
@@ -163,8 +170,8 @@ let addActiveChannel = (channelId, channelName) => {
 let addNonActiveChannel = (channelId, channelName) => {
   document.getElementById(
     "nonActiveChannels"
-  ).innerHTML += `<div class="group-info" id=${channelId}>
-        <button type="button" onClick="joinChannel(this)" data-id=${channelId}>
+  ).innerHTML += `<div class="group-info" id=${channelId} >
+        <button type="button"  onClick="joinChannel(this)" data-id=${channelId}>
         <img
             src="imgs/baseline-add_circle-green-24px.svg"
             alt="settings"

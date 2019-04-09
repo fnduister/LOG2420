@@ -1,5 +1,5 @@
-var user = prompt("username");
-// const user = "fabrice";
+// var user = prompt("username");
+var user = "fabrice";
 var server = new ConnectionHandler(user);
 server.start();
 
@@ -13,6 +13,17 @@ const changeUser = () => {
   server.clear();
   server = new ConnectionHandler(user);
   server.start();
+  console.log({ server });
+};
+
+const changeCurrentChannel = channel => {
+  if (channel.id != server.channelObserver.currentChannelId) {
+    server.send(
+      new Message("onGetChannel", channel.id)
+    );
+    server.channelObserver.setActiveChannel(channel.id);
+    server.channelObserver.currentChannelId = channel.id;
+  }
 };
 
 const joinChannel = obj => {
@@ -31,7 +42,7 @@ const thumbsUp = () => {
   server.send(
     new Message(
       "onMessage",
-      server.messageObserver.currentChannelId,
+      server.channelObserver.currentChannelId,
       thumbsMessage,
       ""
     )
@@ -46,7 +57,7 @@ const sendNewMessage = () => {
     server.send(
       new Message(
         "onMessage",
-        server.messageObserver.currentChannelId,
+        server.channelObserver.currentChannelId,
         messageInput.value,
         ""
       )

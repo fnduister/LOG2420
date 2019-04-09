@@ -11,6 +11,7 @@ class MessageObserver {
 
   //ajoute un nouveau message
   addNewMessage = message => {
+    console.log({ message, currentUser: this.user });
     if (message.sender != this.user) {
       addReceivedMessage(message);
     } else {

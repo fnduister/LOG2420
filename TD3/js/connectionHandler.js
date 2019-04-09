@@ -45,6 +45,7 @@ class ConnectionHandler {
 
       case "onGetChannel":
         console.log("onGetChannel");
+        this.messageObserver.clear();
         if ((this.channelObserver.currentChannelId = this.message.channelId))
           this.messageObserver.updateMessagesList(this.message.data);
         break;
@@ -64,6 +65,7 @@ class ConnectionHandler {
       this.websocket.onerror = event => {
         alert("an error appeared");
       };
+      // this.clear();
     } catch (err) {
       console.log({ err });
     }
