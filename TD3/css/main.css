@@ -192,6 +192,19 @@ section {
   background-color: rgb(213, 216, 218);
 } */
 
+#group-zone .current-channel{
+  background-color: #4c72a0;
+  color: rgb(192, 211, 238);
+}
+
+#group-zone .active-channel{
+  cursor: pointer;
+}
+
+#group-zone .group-info:hover{
+  background-color: #9bbae0;
+}
+
 #group-zone h3 {
   color: #305480;
   margin-left: 1em;
@@ -202,16 +215,13 @@ section {
   height: 20px;
   padding: 0;
   margin: 0 0.5em 0.1em;
+  z-index: 5;
 }
 
 .group-info button:first-child :hover {
   width: 22px;
   height: 22px;
   margin: 0;
-}
-
-.active-group {
-  background-color: rgb(172, 223, 243) !important;
 }
 
 #group-zone > div {

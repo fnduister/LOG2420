@@ -1,9 +1,11 @@
-// var user = prompt("username");
-var user = "fabrice";
+var user = prompt("username");
+// var user = "fabrice";
 var server = new ConnectionHandler(user);
 server.start();
 
 const leaveChannel = obj => {
+  event.cancelBubble = true;
+  if (event.stopPropagation) event.stopPropagation();
   const message = new Message("onLeaveChannel", obj.dataset.id);
   server.send(message);
 };
@@ -17,10 +19,10 @@ const changeUser = () => {
 };
 
 const changeCurrentChannel = channel => {
+  event.cancelBubble = true;
+  if (event.stopPropagation) event.stopPropagation();
   if (channel.id != server.channelObserver.currentChannelId) {
-    server.send(
-      new Message("onGetChannel", channel.id)
-    );
+    server.send(new Message("onGetChannel", channel.id));
     server.channelObserver.setActiveChannel(channel.id);
     server.channelObserver.currentChannelId = channel.id;
   }

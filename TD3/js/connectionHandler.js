@@ -16,6 +16,7 @@ class ConnectionHandler {
     switch (type) {
       case "updateChannelsList":
         console.log("updateChannelList");
+        console.log(this.message);
         this.channelObserver.updateChannelsList(this.message.data);
         if (!this.channelObserver.currentChannelId) {
           this.channelObserver.currentChannelId = this.channelObserver.generalChannelId;
@@ -31,11 +32,22 @@ class ConnectionHandler {
 
       case "onMessage":
         console.log("onMessage");
-        if (this.channelObserver.currentChannelId == this.message.channelId)
+        console.log({ message: this.message });
+        if (this.channelObserver.currentChannelId == this.message.channelId) {
           this.messageObserver.addNewMessage(this.message);
-        this.channelObserver.updateChannelWaitingMessages(
-          this.message.channelId
-        );
+        } else {
+          setTimeout(
+            () => this.channelObserver.saveMessage(this.message),
+            1000
+          );
+          this.channelObserver.updateChannelWaitingMessages(
+            this.message.channelId
+          );
+        }
+
+        // this.channelObserver.state.activeChannels[
+        //   this.message.channelId
+        // ].messages.push(this.message);
         break;
 
       case "onCreateChannel":
@@ -45,6 +57,7 @@ class ConnectionHandler {
 
       case "onGetChannel":
         console.log("onGetChannel");
+        console.log({ list: this.message.data });
         this.messageObserver.clear();
         if ((this.channelObserver.currentChannelId = this.message.channelId))
           this.messageObserver.updateMessagesList(this.message.data);
