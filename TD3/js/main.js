@@ -1,5 +1,5 @@
-var user = prompt("username");
-// var user = "fabrice";
+// var user = prompt("username");
+var user = "fabrice";
 var server = new ConnectionHandler(user);
 server.start();
 

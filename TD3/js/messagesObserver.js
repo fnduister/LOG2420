@@ -16,16 +16,17 @@ class MessageObserver {
     } else {
       addSentMessage(message);
     }
-
     scrollDown();
   };
 
-  updateMessagesList = data => {
+  updateMessagesList = (data, numberOfUsers) => {
+    console.log({ dataUpda: data });
     this.messageList = data.messages;
     for (const message of this.messageList) {
       this.addNewMessage(message);
     }
-    updateActiveChannelName(data.name);
+
+    updateActiveChannelInfo(data.name, numberOfUsers);
   };
 
   clear = () => {
@@ -70,7 +71,9 @@ const addSentMessage = messageInfo => {
     </div>`;
 };
 
-const updateActiveChannelName = newName => {
-  const activeChannelName = document.querySelector("#chat-title h3");
+const updateActiveChannelInfo = (newName, numberOfUsers) => {
+  const activeChannelName = document.querySelector("#channelName");
+  const activenumberOfUsers = document.getElementById("numberOfUsers");
   activeChannelName.innerText = newName;
+  activenumberOfUsers.innerText = numberOfUsers;
 };

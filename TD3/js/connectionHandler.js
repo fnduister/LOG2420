@@ -57,10 +57,15 @@ class ConnectionHandler {
 
       case "onGetChannel":
         console.log("onGetChannel");
-        console.log({ list: this.message.data });
+        
         this.messageObserver.clear();
         if ((this.channelObserver.currentChannelId = this.message.channelId))
-          this.messageObserver.updateMessagesList(this.message.data);
+          this.messageObserver.updateMessagesList(this.message.data, this.channelObserver.state.activeChannels.find(channel =>
+            channel.id == this.channelObserver.currentChannelId).numberOfUsers);
+        console.log({
+          list: this.channelObserver.state.activeChannels.find(channel =>
+            channel.id == this.channelObserver.currentChannelId)
+        });
         break;
     }
   };
@@ -78,6 +83,9 @@ class ConnectionHandler {
       this.websocket.onerror = event => {
         alert("an error appeared");
       };
+      let username = document.getElementById("usernameHeader");
+      username.innerText = this.user;
+
       // this.clear();
     } catch (err) {
       console.log({ err });

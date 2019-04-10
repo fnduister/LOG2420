@@ -80,8 +80,28 @@ section {
 
 #chat-title {
   background-color: #3b8beb;
+  display: flex;
   padding: 0.5em;
   color: white;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#chat-title h4 {
+  height: 1em;
+}
+
+#chat-title div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+#chat-title h3 {
+  margin-left: 0.5em;
+  height: 1em;
+  color: rgb(61, 72, 172);
 }
 
 #group-title {
@@ -192,16 +212,16 @@ section {
   background-color: rgb(213, 216, 218);
 } */
 
-#group-zone .current-channel{
+#group-zone .current-channel {
   background-color: #4c72a0;
   color: rgb(192, 211, 238);
 }
 
-#group-zone .active-channel{
+#group-zone .active-channel {
   cursor: pointer;
 }
 
-#group-zone .group-info:hover{
+#group-zone .group-info:hover {
   background-color: #9bbae0;
 }
 
